@@ -20,6 +20,12 @@ const notificationSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    readBy: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
