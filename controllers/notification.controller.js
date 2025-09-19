@@ -10,6 +10,7 @@ const createNotification = async (req, res) => {
       message,
       priority,
       createdBy: req.user.id,
+      noticeImage: req.file ? `/uploads/notices/${req.file.filename}` : null,
     });
 
     res.status(201).json(notification);
@@ -17,6 +18,7 @@ const createNotification = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
 
 // Get Notifications (Only Students)
 const getNotifications = async (req, res) => {

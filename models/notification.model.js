@@ -20,6 +20,10 @@ const notificationSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    noticeImage: {
+      type: String, // will store the path or cloud URL
+      default: null,
+    },
     readBy: [
       {
         type: mongoose.Schema.Types.ObjectId,

@@ -8,13 +8,16 @@ import notificationRoutes from "./routes/notification.routes.js";
 dotenv.config();
 
 const corsOptions = {
-    origin: "http://localhost:3000",
-    Credential: true
-}
+  origin: "http://localhost:3000",
+  credentials: true,
+};
 
 const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
+
+// Serve uploaded images
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -23,7 +26,7 @@ app.use("/api/notifications", notificationRoutes);
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`)
-    });
-})
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+});
