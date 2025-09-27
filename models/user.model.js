@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
         enum: ["user", "authority",],
         required: true
     },
+    fcmToken: {
+        type: String,
+        default: null,
+    },
 }, { timestamps: true });
 
 export default mongoose.model("User", userSchema);

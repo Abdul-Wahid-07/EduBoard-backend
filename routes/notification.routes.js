@@ -10,4 +10,6 @@ router.get("/", authMiddleware, notifications.getNotifications);
 router.patch("/mark-all-read", authMiddleware, notifications.markAllRead);
 router.patch("/:id", authMiddleware, notifications.toggleRead);
 
+router.post("/save-fcm-token", authMiddleware, notifications.saveFcmToken);
+
 export default router;
